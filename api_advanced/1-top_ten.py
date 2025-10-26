@@ -9,30 +9,31 @@ def top_ten(subreddit):
     """Prints titles of the first 10 hot posts for a subreddit.
 
     Args:
-        subreddit (str): The name of the subreddit to query.
+        subreddit (str): The subreddit to query.
 
     Returns:
         None
     """
     if not subreddit or not isinstance(subreddit, str):
-        print("OK")
+        print(None)
         return
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/CedricBigwi)"}
+
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code != 200:
-            print("OK")
+            print(None)
             return
 
-        data = response.json().get("data", {}).get("children", [])
-        if not data:
-            print("OK")
+        posts = response.json().get("data", {}).get("children", [])
+        if not posts:
+            print(None)
             return
 
-        for post in data:
+        for post in posts:
             print(post.get("data", {}).get("title"))
 
     except Exception:
-        print("OK")
+        print(None)
