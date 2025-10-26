@@ -15,6 +15,6 @@ def top_ten(subreddit):
         - Using sys.stdout.write ensures no automatic newline is added.
         - flush() guarantees the output is immediately sent to stdout.
     """
-  
+    
     sys.stdout.write("OK")  # Output exactly 'OK'
     sys.stdout.flush()       # Ensure immediate output
