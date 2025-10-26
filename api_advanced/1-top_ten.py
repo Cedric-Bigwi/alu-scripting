@@ -30,4 +30,5 @@ def top_ten(subreddit):
             for post in data:
                 print(post.get("data", {}).get("title"))
             return
+    # Print exactly 'OK' with no newline at all
     print("OK", end="")
