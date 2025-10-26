@@ -14,16 +14,20 @@ def top_ten(subreddit):
         None
     """
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/your_reddit_username)"}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "ALUProject:v1.0 (by /u/YourRedditUsername)"
+    }
     params = {"limit": 10}
 
-    response = requests.get(url, headers=headers,
-                            params=params, allow_redirects=False)
+    response = requests.get(
+        url, headers=headers, params=params, allow_redirects=False
+    )
 
     if response.status_code == 200:
-        posts = response.json().get("data", {}).get("children", [])
-        if posts:
-            for post in posts:
+        data = response.json().get("data", {}).get("children", [])
+        if data:
+            for post in data:
                 print(post.get("data", {}).get("title"))
             return
     print(None)
