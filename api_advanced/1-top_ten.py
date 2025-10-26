@@ -13,24 +13,17 @@ def top_ten(subreddit):
     Returns:
         None
     """
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
-    headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/CedricBigwi)"}
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/your_reddit_username)"}
+    params = {"limit": 10}
 
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        if response.status_code != 200:
-            print(None)
-            return
+    response = requests.get(url, headers=headers,
+                            params=params, allow_redirects=False)
 
+    if response.status_code == 200:
         posts = response.json().get("data", {}).get("children", [])
-        if not posts:
-            print(None)
+        if posts:
+            for post in posts:
+                print(post.get("data", {}).get("title"))
             return
-
-        for post in posts:
-            title = post.get("data", {}).get("title")
-            if title:
-                print(title)
-
-    except Exception:
-        print(None)
+    print(None)
