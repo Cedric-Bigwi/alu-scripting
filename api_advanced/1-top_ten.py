@@ -14,6 +14,7 @@ def top_ten(subreddit):
         None
     """
     if not subreddit or not isinstance(subreddit, str):
+        print(None)
         return
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
@@ -29,7 +30,7 @@ def top_ten(subreddit):
 
         posts = response.json().get("data", {}).get("children", [])
         if not posts:
-             print(None)
+            print(None)
             return
 
         # Print titles of the first 10 hot posts
@@ -37,4 +38,4 @@ def top_ten(subreddit):
             print(post.get("data", {}).get("title"))
 
     except Exception:
-       print(None)
+        print(None)
