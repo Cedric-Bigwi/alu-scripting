@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-""" 1-top_ten module prints the titles of the first 10 hot posts """
-
+"""Contains the function top_ten that prints
+the titles of the first 10 hot posts for a subreddit."""
 import requests
 
 
 def top_ten(subreddit):
-    """
-    Queries the Reddit API and prints the titles of the first 10 hot posts
-    listed for a given subreddit.
+    """Prints titles of the first 10 hot posts for a subreddit.
+
     Args:
-        subreddit (str): The name of the subreddit to query.
+        subreddit (str): The subreddit to query.
+
+    Returns:
+        None
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {"User-Agent": "ALU-Reddit-API-Client/1.0"}
