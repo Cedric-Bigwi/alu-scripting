@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Contains the function top_ten that prints the titles
-of the first 10 hot posts for a given subreddit."""
+"""Contains the function top_ten that prints
+the titles of the first 10 hot posts for a subreddit."""
 import requests
 
 
@@ -13,26 +13,24 @@ def top_ten(subreddit):
     Returns:
         None
     """
-    if not subreddit or not isinstance(subreddit, str):
-        return  # Do not print anything
-
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/CedricBigwi)"}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
-
-        # Invalid subreddit or redirect
         if response.status_code != 200:
-            return  # Do not print anything
+            print(None)
+            return
 
         posts = response.json().get("data", {}).get("children", [])
         if not posts:
-            return  # Do not print anything
+            print(None)
+            return
 
-        # Print titles of the first 10 hot posts
         for post in posts:
-            print(post.get("data", {}).get("title"))
+            title = post.get("data", {}).get("title")
+            if title:
+                print(title)
 
     except Exception:
-        return  # Do not print anything
+        print(None)
