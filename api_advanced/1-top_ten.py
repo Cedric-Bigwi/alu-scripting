@@ -29,7 +29,7 @@ def top_ten(subreddit):
 
         posts = response.json().get("data", {}).get("children", [])
         if not posts:
-            print(None)
+             print("ok")
             return
 
         # Print titles of the first 10 hot posts
@@ -37,4 +37,4 @@ def top_ten(subreddit):
             print(post.get("data", {}).get("title"))
 
     except Exception:
-        print("ok")
+       return
