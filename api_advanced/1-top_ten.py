@@ -1,29 +1,5 @@
 #!/usr/bin/python3
-"""
-1-top_ten module
-
-This module contains a single function, `top_ten`, which queries the Reddit API
-to retrieve and display the titles of the top 10 hot posts from a given subreddit.
-
-Usage:
-    >>> top_ten("python")
-    (Prints the titles of the first 10 hot posts on the 'python' subreddit)
-
-If the subreddit is invalid or cannot be accessed, the function prints None.
-
-Example:
-    $ python3 1-main.py programming
-    Firebase founder's response to last week's "Firebase Costs increased by 7000%!"
-    How a 64k intro is made
-    HTTPS on Stack Overflow: The End of a Long Road
-    ...
-
-Requirements:
-    - Must use the `requests` module
-    - Must not follow redirects (use `allow_redirects=False`)
-    - Must handle invalid subreddit names gracefully
-"""
-
+"""1-top_ten module"""
 import requests
 
 
