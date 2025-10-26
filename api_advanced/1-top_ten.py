@@ -15,8 +15,7 @@ def top_ten(subreddit):
         None
     """
     if not subreddit or not isinstance(subreddit, str):
-        print(None)
-        return
+        return  # DO NOT print None
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/CedricBigwi)"}
@@ -24,16 +23,14 @@ def top_ten(subreddit):
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code != 200:
-            print(None)
-            return
+            return  # DO NOT print None
 
         posts = response.json().get("data", {}).get("children", [])
         if not posts:
-            print(None)
-            return
+            return  # DO NOT print None
 
         for post in posts:
             print(post.get("data", {}).get("title"))
 
     except Exception:
-        print(None)
+        return  # DO NOT print None
