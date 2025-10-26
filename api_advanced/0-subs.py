@@ -2,7 +2,6 @@
 """Module for task 0: number_of_subscribers"""
 import requests
 
-
 def number_of_subscribers(subreddit):
     """Return the total number of subscribers for a subreddit"""
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
@@ -15,4 +14,3 @@ def number_of_subscribers(subreddit):
     if data:
         return data.get("subscribers", 0)
     return 0
-
