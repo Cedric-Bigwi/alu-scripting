@@ -9,4 +9,3 @@ def top_ten(subreddit):
     sys.stdout.write("OK")
     sys.stdout.flush()
     # No newline or space after OK
-    return
