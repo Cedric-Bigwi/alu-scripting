@@ -14,8 +14,7 @@ def top_ten(subreddit):
         None
     """
     if not subreddit or not isinstance(subreddit, str):
-        print(None)
-        return
+        return  # Do not print anything
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "ALU-API-advanced:v1.0 (by /u/CedricBigwi)"}
@@ -25,17 +24,15 @@ def top_ten(subreddit):
 
         # Invalid subreddit or redirect
         if response.status_code != 200:
-            print(None)
-            return
+            return  # Do not print anything
 
         posts = response.json().get("data", {}).get("children", [])
         if not posts:
-            print(None)
-            return
+            return  # Do not print anything
 
         # Print titles of the first 10 hot posts
         for post in posts:
             print(post.get("data", {}).get("title"))
 
     except Exception:
-        print(None)
+        return  # Do not print anything
